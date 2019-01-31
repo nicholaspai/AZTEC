@@ -27,6 +27,11 @@ const aztecToken = {};
 aztecToken.getContractAddress = async () => {
     const networkId = await deployer.getNetwork();
     if (!AZTECERC20Bridge.networks[networkId] || !AZTECERC20Bridge.networks[networkId].address) {
+        // Check for deployed contract
+        const { getContractAddressesForNetwork } = require('@aztec/contract-addresses')
+        let deployed = getContractAddressesForNetwork(networkId)
+        if (deployed.aztecErc20Bridge) { return deployed.aztecErc20Bridg }
+        
         throw new Error(`AZTECERC20Bridge.sol not deployed to network ${networkId}`);
     }
     return AZTECERC20Bridge.networks[networkId].address.toLowerCase();

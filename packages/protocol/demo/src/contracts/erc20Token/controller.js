@@ -30,6 +30,11 @@ erc20.getContractAddress = async () => {
     }
     const networkId = await deployer.getNetwork();
     if (!ERC20Mintable.networks[networkId] || !ERC20Mintable.networks[networkId].address) {
+        // Check for deployed contract
+        const { getContractAddressesForNetwork } = require('@aztec/contract-addresses')
+        let deployed = getContractAddressesForNetwork(networkId)
+        if (deployed.aztecErc20Bridge) { return deployed.erc20Mintable }
+        
         throw new Error(`ERC20Mintable.sol not deployed to network ${networkId}`);
     }
     return ERC20Mintable.networks[networkId].address;
