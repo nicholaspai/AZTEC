@@ -22,6 +22,7 @@ yarn-error.log*
 # packages
 packages/protocol/demo/dbDevelopment.json
 packages/protocol/demo/dbKovan.json
+packages/protocol/demo/accounts.json
 packages/protocol/demo/dbMainNet.json
 packages/protocol/demo/dbRinkeby.json
 packages/protocol/demo/dbRopsten.json

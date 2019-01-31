@@ -30,7 +30,7 @@ aztecToken.getContractAddress = async () => {
         // Check for deployed contract
         const { getContractAddressesForNetwork } = require('@aztec/contract-addresses')
         let deployed = getContractAddressesForNetwork(networkId)
-        if (deployed.aztecErc20Bridge) { return deployed.aztecErc20Bridg }
+        if (deployed.aztecErc20Bridge) { return deployed.aztecErc20Bridge }
         
         throw new Error(`AZTECERC20Bridge.sol not deployed to network ${networkId}`);
     }
